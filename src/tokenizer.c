@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 
 /* Return true (non-zero) if c is a whitespace characer
@@ -62,6 +63,7 @@ char *copy_str(char *inStr, short len){
     cp[i] = inStr[i];
   }
   cp[len] = '\0';
+  return cp;
 }
 
 
@@ -73,20 +75,34 @@ char *copy_str(char *inStr, short len){
      tokens[2] = "string"   
      tokens[3] = 0          
 */                                                                          
-/*char **tokenize(char* str){
-  int num_words = word
+char **tokenize(char* str){
+  int num_words = count_words(str);
+  char ** ptr = malloc((num_words+1) * sizeof(char*));
+  for (int i = 0; i < num_words; i ++){
+    if(space_char(str[0])){
+	str = word_start(str);
+    }
+    int len = word_terminator(str) - word_start(str);
+    ptr[i] = copy_str(str, len);
+    str = word_start(word_terminator(str));
+  }
+  ptr[num_words] = 0;
+  return ptr;
+}
 
-  
-  }*/
-
-
-
-
-
-
-
-
-
-
-
-
+/* Prints all tokens. */
+void print_tokens(char **tokens){
+  while(*tokens){
+    printf("%s\n", *tokens);
+    tokens++;
+  }
+}
+/* Frees all tokens and the vector containing themx. */
+void free_tokens(char **tokens){
+  char ** copy = tokens;
+  while(*tokens){
+    free(*tokens);
+    tokens++;
+  }
+  free(copy);
+}
