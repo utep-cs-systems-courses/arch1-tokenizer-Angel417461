@@ -87,14 +87,17 @@ char **tokenize(char* str){
     str = word_start(word_terminator(str));
   }
   ptr[num_words] = 0;
+  printf("%s\n", *ptr[num_words]);
   return ptr;
 }
 
 /* Prints all tokens. */
 void print_tokens(char **tokens){
+  int i= 0;
   while(*tokens){
-    printf("%s\n", *tokens);
+    printf("token[%d] = %s\n",i, *tokens);
     tokens++;
+    i++;
   }
 }
 /* Frees all tokens and the vector containing themx. */
