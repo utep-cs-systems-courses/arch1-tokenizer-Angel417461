@@ -37,10 +37,27 @@ void add_history(List *list, char *str){
 /* Retrieve the string stored in the node where Item->id == id.
    List* list - the linked list
    int id - the id of the Item to find */
-char *get_history(List *list, int id);
+char *get_history(List *list, int id){
+  char * str; // will assign to and return later
+  Item * temp = list->root;  // temp of type Item
+  while(temp!=NULL){ // traversing the linked list
+    if(temp->id == id){ // enter if the node has matching id
+      str = temp->str;
+      return str;
+    }
+    temp = temp->next;
+  }
+}
+
 
 /*Print the entire contents of the list. */
-void print_history(List *list);
+void print_history(List *list){
+  Item * temp = list->root; //creting tem
+  while(temp != NULL){ // traverse entire linked list
+    printf("%d. %s", temp->id, temp->str);
+    temp = temp->next;
+  }
+}
 
 /*Free the history list and the strings it references. */
-void free_history(List *list);
+//void free_history(List *list);
