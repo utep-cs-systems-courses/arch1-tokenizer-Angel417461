@@ -14,10 +14,11 @@ List* init_history(){
    char* str - the string to store
 */
 void add_history(List *list, char *str){
+  char *clone = copy_str(str, len_of(str));
   Item *item = malloc(sizeof(Item)); // allocates memory to the size of struct Item
   if(list->root == NULL){ //checks to see if the list is empty
     item->id = 1;  // 1 because the assignment requests the id's to start at 1
-    item->str = str;
+    item->str = clone;
     list->root = item;
   }else{
     int id_count = 2; 
@@ -27,7 +28,7 @@ void add_history(List *list, char *str){
       id_count++;
     }
     item->id = id_count;
-    item->str = str;
+    item->str = clone;
     temp->next = item;
   }
 }
@@ -58,7 +59,6 @@ void print_history(List *list){
     temp = temp->next;
   }
 }
-
 /*Free the history list and the strings it references. */
 void free_history(List *list){
   while(list->root != NULL){
