@@ -26,6 +26,7 @@ int main(){
 	char ** input = tokenize(str);
 	add_history(list, str);
 	print_tokens(input);
+	free_tokens(input);
       }
       if(string_compare(in, "b")){
 	printf("------history-------\n");
