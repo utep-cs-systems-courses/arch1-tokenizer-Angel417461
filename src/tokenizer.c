@@ -118,15 +118,6 @@ int string_compare(char*x, char *y){
 
 int len_of(char *x){
   int i;
-  for(i = 0; i != '\0'; i++);
+  for(i = 0; x[i] != '\0'; i++);
   return i;
 }
-
-
-
-
-
-
-
-    
-    

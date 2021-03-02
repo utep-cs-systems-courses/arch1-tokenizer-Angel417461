@@ -3,27 +3,19 @@
 #include "tokenizer.h"
 #include "history.h"
 
-
 int main(){
   
   char in[100];
-  char str[100] = "are you happy?";
+  char str[100];
   List *list = init_history();
 
-  //add_history(list, "happy alone");
-  //add_history(list, "spiral staircase");
-  //print_history(list);
-  
-  printf("%d\n", len_of(str));
-
-  
    while(1){
       printf("------menu------\n");
       printf("a. enter a string\n");
       printf("b. print history\n");
       printf("q.quit\n");
       fgets(in, 100, stdin);
-      printf("you entered: '%s'\n", in);
+      printf("you entered: %s\n", in);
       
       if(string_compare(in, "a")){
 	printf("enter your string below:\n");
@@ -47,3 +39,4 @@ int main(){
  done:
  return 0;
 }
+ 
