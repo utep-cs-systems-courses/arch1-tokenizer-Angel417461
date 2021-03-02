@@ -44,4 +44,9 @@ void print_tokens(char **tokens);
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens);
 
+/* returns 1 if the strings are the same */
+int string_compare(char*x, char *y);
+
+/*returns the length of the string*/
+int len_of(char *x);
 #endif

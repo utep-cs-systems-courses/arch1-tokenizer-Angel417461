@@ -98,10 +98,35 @@ void print_tokens(char **tokens){
 }
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens){
-  // char ** copy = tokens;
   while(*tokens){
     free(*tokens);
     tokens++;
   }
-  //free(copy);
 }
+
+int string_compare(char*x, char *y){
+  while (*x != '\0' || *y != '\0'){
+    if (*x == *y){
+      x++;
+      y++;
+    }else{
+      return 0;
+    }
+    return 1;
+  }
+}
+
+int len_of(char *x){
+  int i;
+  for(i = 0; i != '\0'; i++);
+  return i;
+}
+
+
+
+
+
+
+
+    
+    
