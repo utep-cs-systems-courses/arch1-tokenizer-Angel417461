@@ -10,7 +10,7 @@ int main(){
   List *list = init_history();
 
    while(1){
-      printf("------menu------\n");
+      printf("--------menu--------\n");
       printf("a. enter a string\n");
       printf("b. print history\n");
       printf("q.quit\n");
@@ -32,8 +32,14 @@ int main(){
 	printf("------history-------\n");
 	print_history(list);
       }
+      if(in[0] == 33){ 
+	char a = in[1];
+	int id = a - '0';
+	printf("History at %d is: %s\n", id, get_history(list, id));
+      }
       if(string_compare(in, "q")){
 	printf("goodbye\n");
+	free_history(list);
 	goto done;
       }
     }
