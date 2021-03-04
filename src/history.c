@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "history.h"
+#include "tokenizer.h"
 
 
 /* Initialize the linked list to keep the history. */
@@ -14,7 +15,7 @@ List* init_history(){
    char* str - the string to store
 */
 void add_history(List *list, char *str){
-  char *clone = copy_str(str, len_of(str));
+  char *clone = copy_str(str, len_of(str));// makes copy of string and allocates NEW memory
   Item *item = malloc(sizeof(Item)); // allocates memory to the size of struct Item
   if(list->root == NULL){ //checks to see if the list is empty
     item->id = 1;  // 1 because the assignment requests the id's to start at 1
@@ -53,7 +54,7 @@ char *get_history(List *list, int id){
 
 /*Print the entire contents of the list. */
 void print_history(List *list){
-  Item * temp = list->root; //creting tem
+  Item * temp = list->root; //creting temp
   while(temp != NULL){ // traverse entire linked list
     printf("%d. %s", temp->id, temp->str);
     temp = temp->next;
@@ -65,5 +66,6 @@ void free_history(List *list){
     free(list->root);
     list->root = list->root->next;
   }
+  free(list);
 }
 
